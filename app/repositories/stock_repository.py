@@ -6,8 +6,8 @@ def select_all():
     stock = []
 
     sql = "SELECT * FROM stock"
-    results = run_sql(sql)
+    results =run_sql(sql)
 
     for row in results:
         manufacturer = manufacturer_repository.select(row['manufacturer_id'])
-        stock = Stock (row['description'], )
+        stock = stock (row['description'], )

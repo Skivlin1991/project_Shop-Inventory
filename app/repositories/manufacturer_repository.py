@@ -41,4 +41,5 @@ def delete(id):
     values = [id]
     run_sql(sql, vlaues)
 
-def update(manufacturer)
+def update(manufacturer):
+    sql = ""

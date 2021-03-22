@@ -14,6 +14,16 @@ manufacturer2 = manufacturer("Galan","Thetris")
 manufacturer_repository.save(manufacturer2)
 manufacturer3 = manufacturer("Kormdek","Bronzebrowser")
 
+
+stock_1 = ("", "", "", manufacturer1)
+stock_repository.save(stock_1)
+
+stock_2 = ("", "", "", manufacturer2)
+stock_repository.save(stock_2)
+
+stock_3 = ("", "", "", manufacturer3)
+stock_repository.save(stock_3)
+
 manufacturer_repository.select_all()
 
 pdb.set_trace()
