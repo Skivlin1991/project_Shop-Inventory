@@ -1,5 +1,4 @@
 from db.run_sql import run_sql
-
 from models.manufacturer import manufacturer
 
 
@@ -23,21 +22,23 @@ def select_all():
         manufacturers.append(manufacturer)
         return manufacturer
 
-        def select(id):
-            manufacturer = None
-            sql = "SELECT * FROM manufacturers WHERE id = %s"
-            values = [id]
-            result = run_sql(sql, values)[0]
+def select(id):
+    manufacturer = None
+    sql = "SELECT * FROM manufacturers WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-            if result is not None:
-                manufacturer = manufacturer(result['first_name'], result['last_name'], result['id'])
-                return manufacturer
+    if result is not None:
+       manufacturer = manufacturer(result['first_name'], result['last_name'], result['id'])
+    return manufacturer
         
-        def delete():
-            sql = "DELETE FROM manufacturers"
-            run_sql(sql)
+def delete_all():
+    sql = "DELETE FROM manufacturers"
+    run_sql(sql)
 
-        def delete(id):
-            sql = "DELETE FROM manufacturers WHERE id = %s"
-            values = [id]
-            run_sql(sql, values)
+def delete(id):
+    sql = "DELETE FROM manufacturer WHERE id = %s"
+    values = [id]
+    run_sql(sql, vlaues)
+
+def update(manufacturer)
