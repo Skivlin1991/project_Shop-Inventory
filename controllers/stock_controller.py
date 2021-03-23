@@ -1,7 +1,7 @@
-from flask from app.models.manufacturer import Manufacturer
-import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect
 from flask import Blueprint
-from models.stock import stock
+from models.stock import Stock 
+from templates import *
 import repositories.stock_repository as stock_repository
 import repositories.manufacturer_repository as manufacturer_repository
 
@@ -10,14 +10,14 @@ stock_blueprint = Blueprint("stock", __name__)
 @stock_blueprint.route("/stock")
 def stock():
     stock = stock_repository.select_all() # NEW
-    return render_template("stock/index.html", all_stock = stock)
+    return render_template("show.html", all_stock = stock)
     
 # NEW
 # GET '/stock/new'
 @stock_blueprint.route("/stock/new", methods=['GET'])
 def new_stock():
     manufacturer = manufacturer_repository.select_all()
-    return render_template("stock/new.html", all_manufacturer = manufacturers)
+    return render_template("new.html", all_manufacturers = manufacturer)
 
 # CREATE
 # POST '/stock'
@@ -26,6 +26,7 @@ def create_stock():
     name = request.form['name']
     description = request.form['description']
     manufacturer = request.form['manufacturer']
+    cost = request.form ['cost']
     price = request.form['price']
     manufacturer = manufacturer_repository.select(request.form['manufacturer_id'])
     stock = stock(name, description , price ,id)
@@ -34,10 +35,10 @@ def create_stock():
 
 # SHOW
 # GET '/stock/<id>'
-@stock_blueprint.route("/books/<id>", methods=['GET'])
-def show_book(id):
-    book = book_repository.select(id)
-    return render_template('books/show.html', book = book)
+@stock_blueprint.route("/stock/<id>", methods=['GET'])
+def show_stock(id):
+    stock = stock_repository.select(id)
+    return render_template('show.html', stock = stock)
 
 # EDIT
 # GET '/stock/<id>/edit'
@@ -53,7 +54,7 @@ def edit_stock(id):
 def update_stock(id):
     name  = request.form['title']
     description = request.form['description']
-    price = requset.form['price']
+    price = request.form['price']
     manufacturer = manufacturer_repository.select(request.form['manufacturer_id'])
     stock= stock(name, description ,price ,id )
     print(stock.manufacturer.full_name())
@@ -61,7 +62,7 @@ def update_stock(id):
     return redirect('/stock')
 
 # DELETE
-# DELETE '/books/<id>'
+# DELETE '/stock/<id>'
 @stock_blueprint.route("/stock/<id>/delete", methods=['POST'])
 def delete_stock(id):
     stock_repository.delete(id)

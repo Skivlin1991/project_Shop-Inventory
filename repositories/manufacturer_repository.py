@@ -1,5 +1,5 @@
 from db.run_sql import run_sql
-from models.manufacturer import manufacturer
+from models.manufacturer import Manufacturer
 
 
 def save(manufacturer):
@@ -19,7 +19,7 @@ def select_all():
     for row in results:
         manufacturer = manufacturer(row['first_name'], 
         row['last_name'], row['id'])
-        manufacturers.append(manufacturer)
+        manufacturer.append(manufacturer)
         return manufacturer
 
 def select(id):
@@ -39,7 +39,20 @@ def delete_all():
 def delete(id):
     sql = "DELETE FROM manufacturer WHERE id = %s"
     values = [id]
-    run_sql(sql, vlaues)
+    run_sql(sql, values)
 
 def update(manufacturer):
-    sql = ""
+    sql = "UPDATE manufacturer SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+    values = [manufacturer.first_name, manufacturer.last_name, manufacturer.id]
+    run_sql(sql, values)
+
+def stock(manufacturer):
+    stock = []
+
+    sql = "SELECT * FROM stock WHERE manufacturer_id = %s"
+    values = [manufacturer.id]
+    results = run_sql(sql, values)
+    for row in results:
+        stock = stock(row['name'], row['description'], row['manufacturer'], row['cost'], row['price'], row ['id'] )
+        stock.append(stock)
+    return stock

@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>My Book List</title>
+    <title>My Bloody Shop</title>
 </head>
 
 <body>
     <header>
         <nav>
             <ul class="menu">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('stock.stock') }}">stock</a></li>
-                <li><a href="{{ url_for('stocks.new_stocks') }}">New Book</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/stock">stock</a></li>
+                <li><a href="/stock/new">New stock</a></li>
             </ul>
         </nav>
     </header>

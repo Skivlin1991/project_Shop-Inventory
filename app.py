@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from app.controllers.stock_controller.py import stock_blueprint
+from controllers.stock_controller import stock_blueprint
 
 
 app = Flask(__name__)

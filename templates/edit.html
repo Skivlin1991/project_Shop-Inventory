@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/stock/{{stock.id}}" method="post">
+
+    <div>
+        <label for="name">Title:</label>
+        <input type="text" id="name" value="{{stock.name}}" required>
+    </div>
+
+    <div>
+        <label for="description">Genre:</label>
+        <input type="text" id="description" name="description" value="{{stock.description}}" required autofocus>
+    </div>
+
+    <div>
+        <label for="manufacturer">Author:</label>
+        <select id="manufacturer" name="manufacturer_id">
+            {% for manufacturer in all_manufacturers %}
+            <option value="{{ manufacturer.id }}" {% if stock.manufacturer.id==manufacturer.id %} selected="selected" {% endif %}>
+                {{ manufacturer.full_name() }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit">Update Stock</button>
+
+</form>
+
+{% endblock %}
