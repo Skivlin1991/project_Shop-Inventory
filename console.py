@@ -19,7 +19,7 @@ manufacturer_repository.save(manufacturer3)
 stock_1 = Stock("Bag of holding", "Wondrous Item",  manufacturer1, 100 , 175)
 stock_repository.save(stock_1)
 stock_2 = Stock("Ivory Goat", "Wonderous Item", manufacturer1, 300, 424)
-stock_repository.save(stock_2)
+stock_repository.save(stock_2)q
 
 stock_3 = Stock("Necklace Of Fireballs", "Wonderous Item", manufacturer2, 400, 510)
 stock_repository.save(stock_3)
