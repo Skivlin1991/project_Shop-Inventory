@@ -62,6 +62,19 @@ def update_stock(id):
     stock_repository.update(stock)
     return redirect('/stock')
 
+@stock_blueprint.route("/stock/<id>/sell", methods=['POST'])
+def sell_stock(id):
+    stock_item = stock_repository.select(id)
+    name = stock_item.name
+    description = stock_item.description
+    price = stock_item.price
+    cost = stock_item.cost
+    in_stock = False
+    manufacturer = manufacturer_repository.select(stock_item.manufacturer.id)
+    stock = Stock(name, description, manufacturer, cost, price, in_stock ,id )
+    stock_repository.update(stock)
+    return redirect('/stock')
+
 # DELETE
 # DELETE '/stock/<id>'
 @stock_blueprint.route("/stock/<id>/delete", methods=['POST'])
