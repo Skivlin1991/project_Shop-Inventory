@@ -46,18 +46,19 @@ def show_stock(id):
 def edit_stock(id):
     stock = stock_repository.select(id)
     manufacturer = manufacturer_repository.select_all()
-    return render_template('stock/edit.html', stock = stock, all_manufacturer = manufacturer)
+    return render_template('edit.html', stock = stock, all_manufacturers = manufacturer)
 
 # UPDATE
 # PUT '/stock/<id>'
 @stock_blueprint.route("/stock/<id>", methods=['POST'])
 def update_stock(id):
-    name  = request.form['title']
+    name = request.form['name']
     description = request.form['description']
-    price = request.form['price']
+    price = int(request.form['price'])
+    cost = int(request.form['cost'])
+    in_stock = request.form['in_stock']
     manufacturer = manufacturer_repository.select(request.form['manufacturer_id'])
-    stock= stock(name, description ,price ,id )
-    print(stock.manufacturer.full_name())
+    stock= Stock(name, description, manufacturer, cost, price, in_stock ,id )
     stock_repository.update(stock)
     return redirect('/stock')
 

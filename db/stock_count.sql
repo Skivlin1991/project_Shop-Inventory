@@ -13,6 +13,7 @@ CREATE TABLE stock (
    description VARCHAR (360),
    cost INT,
    price INT,
+   in_stock BOOLEAN, 
    manufacturer_id INT REFERENCES manufacturers(id) ON DELETE CASCADE
 );
 
