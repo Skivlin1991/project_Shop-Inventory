@@ -3,7 +3,7 @@ body{background-image: url(/static/my_bloody_shop.jpeg);
     background-repeat:no-repeat;
     background-size : 100%;}
 
-h1,h2,h3 {color: blueviolet;}
+h1,h2,h3 {color: white;}
 
 .in-stock > p {
     color:white;
