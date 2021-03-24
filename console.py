@@ -7,7 +7,6 @@ import repositories.manufacturer_repository as manufacturer_repository
 import repositories.stock_repository as stock_repository
 
 manufacturer_repository.delete_all()
-
 stock_repository.delete_all()
 
 manufacturer1 = Manufacturer("Onyxhand","Dustcounter")
@@ -17,19 +16,19 @@ manufacturer_repository.save(manufacturer2)
 manufacturer3 = Manufacturer("Kormdek","Bronzebrowser")
 
 #  name, description , manufacturer ,cost, price 
-stock_1 = ("Bag of holding", "Wondrous Item", "100 Gold","175 Gold", manufacturer1)
+stock_1 = Stock("Bag of holding", "Wondrous Item",  manufacturer1, 100 , 175)
 stock_repository.save(stock_1)
-stock_2 = ("Ivory Goat", "Wonderous Item", "300 Gold","424 Gold", manufacturer1)
+stock_2 = Stock("Ivory Goat", "Wonderous Item", manufacturer1, 300, 424)
 stock_repository.save(stock_2)
 
-stock_3 = ("Necklace Of Fireballs", "Wonderous Item", "400 Gold","510 Gold", manufacturer2)
+stock_3 = Stock("Necklace Of Fireballs", "Wonderous Item", manufacturer2, 400, 510)
 stock_repository.save(stock_3)
-stock_4 = ("Ring Of Feather Falling", "Wonderous Item", "2000 Gold","3250 Gold", manufacturer2)
+stock_4 = Stock("Ring Of Feather Falling", "Wonderous Item", manufacturer2, 2000, 3250)
 stock_repository.save(stock_4)
 
-stock_5 = ("Flame Tongue", "Weapon(greatsword)", "4000 Gold","5550 Gold", manufacturer3)
+stock_5 = ("Flame Tongue", "Weapon(greatsword)",manufacturer3, 4000,5550)
 stock_repository.save(stock_5)
-stock_6 = ("Vorpal Sword", "Weapon(legendary)", "20,000 Gold","45,000 Gold" ,manufacturer3)
+stock_6 = ("Vorpal Sword", "Weapon(legendary)",manufacturer3, 20,000,45,000)
 stock_repository.save(stock_6)
 
 manufacturer_repository.select_all()

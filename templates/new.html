@@ -23,12 +23,13 @@
         <label for="manufacturer">manufacturer:</label>
         <select id="manufacturer" name="manufacturer_id">
             {% for manufacturer in all_manufacturers %}
-            <option value="{{ manufacturer.id }}">{{ manufacturer.full_name() }}</option>
+            <option value="{{ manufacturer.id }}">{{ manufacturer.first_name}}</option>
+            {% endfor %}
         </select>
-        {% endblock %}
+       
     </div>
 
     <button type="submit">Add stock</button>
 
-</form>
-     
+    </form>
+{% endblock %}

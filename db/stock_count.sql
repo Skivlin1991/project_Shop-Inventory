@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS stock;
-DROP TABLE IF EXISTS manufacturer;
+DROP TABLE IF EXISTS manufacturers;
 
 CREATE TABLE manufacturers(
     id SERIAL PRIMARY KEY,
@@ -9,10 +9,11 @@ CREATE TABLE manufacturers(
 
 CREATE TABLE stock (
    id SERIAL PRIMARY KEY,
+   name VARCHAR(255),
    description VARCHAR (360),
    cost INT,
    price INT,
-   manufacturer_id INT REFERENCES manufacturer(id) ON DELETE CASCADE
+   manufacturer_id INT REFERENCES manufacturers(id) ON DELETE CASCADE
 );
 
 

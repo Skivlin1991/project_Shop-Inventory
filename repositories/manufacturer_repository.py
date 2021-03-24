@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.manufacturer import Manufacturer
+from models.stock import Stock
 
 
 def save(manufacturer):
@@ -17,10 +18,10 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        manufacturer = manufacturer(row['first_name'], 
+        new_manufacturer = Manufacturer(row['first_name'], 
         row['last_name'], row['id'])
-        manufacturer.append(manufacturer)
-        return manufacturer
+        manufacturer.append(new_manufacturer)
+    return manufacturer
 
 def select(id):
     manufacturer = None
@@ -29,7 +30,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-       manufacturer = manufacturer(result['first_name'], result['last_name'], result['id'])
+       manufacturer = Manufacturer(result['first_name'], result['last_name'], result['id'])
     return manufacturer
         
 def delete_all():
@@ -53,6 +54,6 @@ def stock(manufacturer):
     values = [manufacturer.id]
     results = run_sql(sql, values)
     for row in results:
-        stock = stock(row['name'], row['description'], row['manufacturer'], row['cost'], row['price'], row ['id'] )
+        stock = Stock(row['name'], row['description'], row['manufacturer'], row['cost'], row['price'], row['id'] )
         stock.append(stock)
     return stock
